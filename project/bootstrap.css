@@ -1,0 +1,15 @@
+.container{
+    background-color: yellow;
+}
+
+.container_fluid{
+    background-color: pink;
+}
+.row{
+    border-style: solid;
+    border-color: green;
+}
+.col{
+    border-style: solid;
+    border-color: orange;
+}
