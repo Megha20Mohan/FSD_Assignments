@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Candidate Form</title>
+    <script>
+      function validateForm() {
+        // Validate name (at least 3 characters)
+        var name = document.getElementById("name").value;
+        if (name.length < 3) {
+          alert("Name must be at least 3 characters long.");
+          return false;
+        }
+
+        // Validate password (more than 5 characters)
+        var password = document.getElementById("pass").value;
+        if (password.length <= 5) {
+          alert("Password must be more than 5 characters.");
+          return false;
+        }
+
+        // Validate confirm password matches
+        var confirmPassword = document.getElementById("samepass").value;
+        if (password !== confirmPassword) {
+          alert("Passwords do not match.");
+          return false;
+        }
+
+        // Validate email format
+        var email = document.getElementById("email").value;
+        var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+
+        // If all validations pass
+        return true;
+      }
+    </script>
+  </head>
+
+  <body>
+    <center>
+      <h1 align="center">CANDIDATE FORM</h1>
+      <hr />
+      <hr />
+      <br />
+      <form method="post" action="" onsubmit="return validateForm()">
+        Enter name: <input type="text" id="name" name="name" required /><br /><br />
+        Age: <input type="number" id="number" name="number" required /><br /><br />
+        DOB(Date of Birth): <input type="date" id="dateofbirth" name="dateofbirth" required /><br /><br /><hr />
+        Username: <input type="text" id="username" name="username" required /><br /><br />
+        Password: <input type="password" id="pass" name="pass" required /><br /><br />
+        Confirm password: <input type="password" id="samepass" name="samepass" required /><hr /><br />
+        Email: <input type="email" id="email" name="email" required /><br /><br />
+        Mobile number: <input type="number" id="mobile" name="mobile" required /><br /><br />
+        Gender:
+        <input type="radio" id="gender" name="gender" value="Female" />F
+        <input type="radio" id="gender" name="gender" value="Male" />M
+        <input type="radio" id="gender" name="gender" value="Other" />Other<br /><br /><hr />
+        Qualification:
+        <select id="qualification" name="qualification">
+          <option value="B.Tech">B.Tech</option>
+          <option value="M.Tech">M.Tech</option>
+          <option value="+2">PlusTwo</option>
+          <option value="SSLC">SSLC</option>
+          <option value="PhD">PhD</option>
+        </select><br /><br />
+        Hobbies:
+        <input type="checkbox" id="hobbies" name="hobbies" value="Reading" />Reading
+        <input type="checkbox" id="hobbies" name="hobbies" value="Cricket" />Cricket
+        <input type="checkbox" id="hobbies" name="hobbies" value="Football" />Football<br /><br />
+        <input type="submit" value="Submit" /><br /><br />
+        <input type="reset" value="Reset" /><br />
+      </form>
+    </center>
+  </body>
+</html>
