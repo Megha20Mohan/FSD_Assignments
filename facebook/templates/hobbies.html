@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form</title>
+    </head>
+    <body bgcolor="#B0C4DE">
+        <center>
+        <hr>
+        <h3>Fill your Personal Details</h3>
+        <hr>
+        <br>
+        <form method="post" action="/recommendation/hobbies/" target="blank">
+            name: <input type="text" id="name" name="name"/><br><br>
+            Age: <input type="number" id="2" name="Enter age"/><br><br>
+            DOB: <input type="date" id="3" name="Enter DOB"/><br><br>
+            Username: <input type="text" id="4" name="Enter username"/><br><br>
+            Password: <input type="password" id="5" name="Enter password"/><br><br>
+            Confirm password: <input type="password" id="6" name="Enter password"/><br><br>
+            Email: <input type="email" id="7" name="Enter email"/><br><br>
+            Mobile: <input type="number" id="8" name="Enter phone number"/><br><br>
+            Gender: <input type="radio" id="9" name="gender" value="Male">M</input>
+                    <input type="radio" id="10" name="gender" value="Female">F</input>
+                    <input type="radio" id="11" name="gender" value="Others">Others</input>
+            <br><br>
+            Qualification:  <select id="12" name="Qualification">
+                <option value="10">SSLC</option>
+                <option value="12">Plus Two</option>
+                <option value="BTech">BTech</option>
+                <option value="MTech">MTech</option>
+                <option value="PhD">PhD</option>
+            </select>
+            <br><br>
+            Hobbies: <input type="checkbox" id="hobbies" name="hobbies" value="Reading">Chess</input>
+                     <input type="checkbox" id="hobbies" name="hobbies" value="Drawing">Cricket</input>
+                     <input type="checkbox" id="hobbies" name="hobbies" value="Dancing">Singing</input>
+                     <input type="checkbox" id="hobbies" name="hobbies" value="Others">Others</input><br><br>
+            Address: <textarea id="13" name="address"></textarea><br><br>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset"><br><br>
+        </form>
+        <p>Build by {{website}} for the subject {{course}}</p>
+        </center>
+    </body>
+</html>
