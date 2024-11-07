@@ -1,11 +1,11 @@
 from django.db import models
 
 # Create your models here.
+
 class Person(models.Model):
-    first_name = models.CharField(max_length=30)
+    username = models.CharField(max_length=30)
+    email = models.CharField(max_length=100, default='example@email.com')
 
-    #email=models.EmailField()
-
-class Student(models.Model):
-    hobbies = models.CharField(max_length=20)
-    #roll_no = models.CharField(max_length=20)
+class Hobbies(models.Model):
+    username = models.CharField(max_length=30)
+    hobbies = models.CharField(max_length=250)

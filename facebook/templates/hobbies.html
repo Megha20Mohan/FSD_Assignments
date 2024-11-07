@@ -1,44 +1,75 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>form</title>
-    </head>
-    <body bgcolor="#B0C4DE">
-        <center>
-        <hr>
-        <h3>Fill your Personal Details</h3>
-        <hr>
-        <br>
-        <form method="post" action="/recommendation/hobbies/" target="blank">
-            name: <input type="text" id="name" name="name"/><br><br>
-            Age: <input type="number" id="2" name="Enter age"/><br><br>
-            DOB: <input type="date" id="3" name="Enter DOB"/><br><br>
-            Username: <input type="text" id="4" name="Enter username"/><br><br>
-            Password: <input type="password" id="5" name="Enter password"/><br><br>
-            Confirm password: <input type="password" id="6" name="Enter password"/><br><br>
-            Email: <input type="email" id="7" name="Enter email"/><br><br>
-            Mobile: <input type="number" id="8" name="Enter phone number"/><br><br>
-            Gender: <input type="radio" id="9" name="gender" value="Male">M</input>
-                    <input type="radio" id="10" name="gender" value="Female">F</input>
-                    <input type="radio" id="11" name="gender" value="Others">Others</input>
-            <br><br>
-            Qualification:  <select id="12" name="Qualification">
-                <option value="10">SSLC</option>
-                <option value="12">Plus Two</option>
-                <option value="BTech">BTech</option>
-                <option value="MTech">MTech</option>
-                <option value="PhD">PhD</option>
-            </select>
-            <br><br>
-            Hobbies: <input type="checkbox" id="hobbies" name="hobbies" value="Reading">Chess</input>
-                     <input type="checkbox" id="hobbies" name="hobbies" value="Drawing">Cricket</input>
-                     <input type="checkbox" id="hobbies" name="hobbies" value="Dancing">Singing</input>
-                     <input type="checkbox" id="hobbies" name="hobbies" value="Others">Others</input><br><br>
-            Address: <textarea id="13" name="address"></textarea><br><br>
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset"><br><br>
-        </form>
-        <p>Build by {{website}} for the subject {{course}}</p>
-        </center>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - {{ website }}</title> <!-- Using the 'website' context -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .register-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .register-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .register-container button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="register-container">
+    <h2>Register for {{ course }}</h2> <!-- Using the 'course' context -->
+    <p>Welcome to {{ website }}!</p> <!-- Using the 'website' context -->
+    <form action="/register/hobbies/" method="post">
+        {% csrf_token %}
+        <label for="username">username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="hobbies">Hobbies</label>
+        <input type="text" id="hobbies" name="hobbies" required>
+
+        <button type="submit">Add hobbies</button>
+    </form>
+</div>
+
+</body>
 </html>

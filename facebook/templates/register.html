@@ -1,112 +1,81 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - {{ website }}</title> <!-- Using the 'website' context -->
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
         }
-
-        .main {
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+        .register-container {
             width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        .main h2 {
-            color: #4caf50;
+        .register-container h2 {
+            text-align: center;
             margin-bottom: 20px;
         }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-            font-weight: bold;
+        .register-container p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
         }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        select {
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
             width: 100%;
-            margin-bottom: 15px;
             padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-
-        button[type="submit"] {
-            padding: 15px;
-            border-radius: 10px;
-            border: none;
-            background-color: #4caf50;
-            color: white;
-            cursor: pointer;
+        .register-container button {
             width: 100%;
+            padding: 10px;
+            color: #fff;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             font-size: 16px;
+        }
+        .register-container button:hover {
+            background-color: #4cae4c;
         }
     </style>
 </head>
-
 <body>
-    <div class="main">
-        <h2>Registration Form</h2>
-        <form method='post' action="/recommendation/register/">
-            <label for="first">First Name:</label>
-            <input type="text" id="firstname" name="firstname" required />
 
-            <label for="last">Last Name:</label>
-            <input type="text" id="lastname" name="lastname" required />
+<div class="register-container">
+    <h2>Register for {{ course }}</h2> <!-- Using the 'course' context -->
+    <p>Welcome to {{ website }}!</p> <!-- Using the 'website' context -->
+    <form action="/register/registration/" method="post">
+        {% csrf_token %}
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+        
+        <button type="submit">Register</button>
+    </form>
+</div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"
-                   pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
-                   title="Password must contain at least one number, 
-                           one alphabet, one symbol, and be at 
-                           least 8 characters long" required />
-
-            <label for="repassword">Re-type Password:</label>
-            <input type="password" id="repassword" name="repassword" required />
-
-            <label for="mobile">Contact:</label>
-            <input type="text" id="mobile" name="mobile" maxlength="10" required />
-
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
-                <option value="male">
-                    Male
-                </option>
-                <option value="female">
-                    Female
-                </option>
-                <option value="other">
-                    Other
-                </option>
-            </select>
-
-            <button type="submit">
-                Submit
-            </button>
-        </form>
-    </div>
-    <p>Build by {{website}} for the subject {{course}}</p>
 </body>
-
 </html>

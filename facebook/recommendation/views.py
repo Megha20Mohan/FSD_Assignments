@@ -1,26 +1,27 @@
 from django.shortcuts import render, HttpResponse
-
-def recommend(request):
-    return HttpResponse("This is friends recommendation page")
-
-def hobbies(request):
-    if request.method=='POST':
-        hobbies=request.POST['hobbies']
-        print(hobbies)
-        ins=Student(hobbies=hobbies)
-        ins.save()
-        print("Success")
-
-    context={'website':'Amrita', 'course':'FSD'}
-    return render(request,'hobbies.html',context)
+from recommendation.models import Person,Hobbies
+def register(request):
+    return HttpResponse("<html><body>This is a response</body></html>")
 
 def registration(request):
-    if request.method=='POST':
-        name=request.POST['firstname']
+    if request.method == "POST":
+        name=request.POST['username']
+        email = request.POST['email']
         print(name)
-        ins=Person(first_name=name)
+        ins=Person(username=name,email=email)
         ins.save()
         print("Success")
-
-    context={'website':'Amrita', 'course':'FSD'}
+    context = {"website":"Amrita","course":"Full stack development"}
     return render(request,'register.html',context)
+
+def hobbies(request):
+    if request.method == "POST":
+        username=request.POST['username']
+        hobbies = request.POST['hobbies']
+        ins=Hobbies(username=username,hobbies=hobbies)
+        ins.save()
+        print("Success")
+    context = {"website":"Amrita","course":"Full stack development"}    
+    return render(request,'hobbies.html',context)
+
+
