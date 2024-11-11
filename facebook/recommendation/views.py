@@ -1,9 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from recommendation.models import Person,Hobbies
-def register(request):
-    return HttpResponse("<html><body>This is a response</body></html>")
-
+from .forms import RecommendationForm
 def registration(request):
+    reg=RecommendationForm()
     if request.method == "POST":
         name=request.POST['username']
         email = request.POST['email']
@@ -24,4 +23,11 @@ def hobbies(request):
     context = {"website":"Amrita","course":"Full stack development"}    
     return render(request,'hobbies.html',context)
 
+# def data1(request):
+#     dataset = Person.objects.all
+#     context = {"db":data1,}
+#     return(request,'response.html',context)
 
+def edit(request):
+    reg=RecommendationForm()
+    return render(request,'edit.html',{'reg1':reg})
