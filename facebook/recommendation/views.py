@@ -28,6 +28,26 @@ def hobbies(request):
 #     context = {"db":data1,}
 #     return(request,'response.html',context)
 
-def edit(request):
-    reg=RecommendationForm()
+def edit(request,pk):
+    row_to_edit=Person.objects.get(pk=pk)
+    if request.POST:
+        username=request.POST.get('username')
+        row_to_edit.username=username
+        row_to_edit.save()
+        dataset=Person.objects.all()
+        return render(request, 'response1.html', {'db':dataset})
+
+
+    reg=RecommendationForm(instance=row_to_edit)
     return render(request,'edit.html',{'reg1':reg})
+
+def response_list(request):
+    dataset = Person.objects.all()
+    return render(request, 'response1.html', {'db': dataset})
+
+
+def delete(request,pk):
+    row=Person.objects.get(pk=pk)
+    row.delete()
+    dataset=Person.objects.all()
+    return render(request,'response1.html',{'db':dataset})
